@@ -33,7 +33,7 @@ public class ProjectController {
 
     @PostMapping
     public ResponseEntity<APIResponse<Project>> createProject (@RequestBody Project project){
-        return projectService.exists(project.getId())? ResponseUtil.badRequest("Ya existe un proyecto con id {0}", project.getId()):
+        return projectService.exists(project.getId()) ? ResponseUtil.badRequest("Ya existe un proyecto con id {0}", project.getId()):
         ResponseUtil.success(projectService.save(project));
     }
 

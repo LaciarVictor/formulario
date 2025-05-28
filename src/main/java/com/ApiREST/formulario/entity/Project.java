@@ -1,10 +1,8 @@
 package com.ApiREST.formulario.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import java.time.LocalDate;
 
 @Entity
 public class Project {
@@ -16,6 +14,13 @@ public class Project {
     @NotBlank
     private String name;
 
+    private LocalDate dueDate;
+
+    private boolean done;
+
+    @ManyToOne(optional=true)
+    private Project project;
+
 
 
     public Long getId() {return id;}
@@ -26,4 +31,27 @@ public class Project {
 
     public void setName (String name) {this.name = name;}
 
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
 }
